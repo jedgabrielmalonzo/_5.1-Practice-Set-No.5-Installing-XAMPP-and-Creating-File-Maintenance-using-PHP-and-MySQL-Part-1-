@@ -62,6 +62,8 @@ include "connection.php";
                     <th>Lastname</th>
                     <th>Email</th>
                     <th>Contact</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
                 </tr>
             </thead>
             <tbody>
@@ -72,21 +74,13 @@ include "connection.php";
                 while ($row = mysqli_fetch_array($res)) {
 
                     echo "<tr>";
-                    echo "<td>";
-                    echo $row["id"];
-                    echo "</td>";
-                    echo "<td>";
-                    echo $row["first name"];
-                    echo "</td>";
-                    echo "<td>";
-                    echo $row["last name"];
-                    echo "</td>";
-                    echo "<td>";
-                    echo $row["email"];
-                    echo "</td>";
-                    echo "<td>";
-                    echo $row["contact"];
-                    echo "</td>";
+                    echo "<td>";echo $row["id"];echo "</td>";
+                    echo "<td>"; echo $row["firstname"];echo "</td>";
+                    echo "<td>";echo $row["lastname"];echo "</td>";
+                    echo "<td>";echo $row["email"];echo "</td>";
+                    echo "<td>";echo $row["contact"];echo "</td>";
+                    echo "<td>";echo $row["contact"];echo "</td>";
+                    echo "<td>";echo $row["contact"];echo "</td>";
                     echo "</tr>";
 
                 }
@@ -103,8 +97,47 @@ include "connection.php";
 
     if (isset($_POST["insert"])) {
         mysqli_query($link, "insert into table1 values(NULL,'$_POST[firstname]','$_POST[lastname]','$_POST[email]','$_POST[contact]')");
+
+
+        ?>
+        <script type="text/javascript">
+
+            window.location.href=window.location.href
+
+
+        </script>
+
+        <?php
     }
-  
+
+    if (isset($_POST["delete"])) {
+        mysqli_query($link, "delete from table1 where firstname='$_POST[firstname]'") or die(mysqli_error($link));
+
+
+        ?>
+        <script type="text/javascript">
+
+            window.location.href=window.location.href
+
+
+        </script>
+
+        <?php
+    }
+
+    if (isset($_POST["update"])) {
+        mysqli_query($link, "update table1 set firstname='$_POST[lastname]' where firstname='$_POST[firstname]'") or die(mysqli_error($link));
+
+        ?>
+        <script type="text/javascript">
+
+            window.location.href=window.location.href
+
+
+        </script>
+
+        <?php
+    }
 
 
 
