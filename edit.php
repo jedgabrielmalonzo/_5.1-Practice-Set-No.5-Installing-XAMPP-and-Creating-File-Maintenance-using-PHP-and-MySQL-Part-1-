@@ -78,7 +78,7 @@ while($row=mysqli_fetch_array($res))
 if(isset($_POST["update"]))
 {
     mysqli_query($link, "update table1 set firstname='$_POST[firstname]', lastname='$_POST[lastname]', email='$_POST[email]', contact='$_POST[contact]' where id=$id");
-}
+
 ?>
 
 <script type="text/javascript">
@@ -87,6 +87,7 @@ window.location="index.php";
 
 <?php
 
+}
 
 ?>
 
